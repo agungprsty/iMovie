@@ -1,5 +1,4 @@
-// script.js
-const API_KEY = "04c35731a5ee918f014970082a0088b1"; // Ganti YOUR_API_KEY dengan kunci API Anda dari TMDb
+const API_KEY = "04c35731a5ee918f014970082a0088b1";
 const DISCOVER_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}`;
 const SEARCH_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`;
 const resetBtn = document.getElementById('resetBtn');
@@ -65,6 +64,7 @@ function renderMovieCards(movies) {
     // Format vote_average to one decimal place
     const voteAverage = movie.vote_average.toFixed(1);
 
+    // Card Section
     const movieCardHTML = `
     <div class="col-md-2 mt-1 mb-1" style="width: ${colWidth}%">
       <div class="card position-relative">
