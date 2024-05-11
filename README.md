@@ -1,19 +1,20 @@
 ### iMovie
 
-```
-CREATOR:
-- NIM   = 215411097
-- NAMA  = AGUNG PRASETYO
-```
+LINK: https://agungprsty.github.io/iMovie
 
-```
-TEKNOLOGI:
+#### Creator
+- NIM           = 215411097
+- NAMA       = AGUNG PRASETYO
+- JURUSAN = Teknik Informatika
+
+#### Teknologi
 - HTML
 - CSS
 - JAVASCRIPT
-```
 
-```
-SERVICE:
+#### Service
 - API (from themoviedb.org)
-```
+
+#### Saran
+1. Rekomendasi nonton google + yt
+2. Redirect to lk21 or 
