@@ -69,7 +69,7 @@ function renderMovieCards(movies) {
     <div class="col-md-2 mt-1 mb-1" style="width: ${colWidth}%">
       <div class="card position-relative">
         <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
-          <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" class="card-img-top img-fluid" alt="${movie.title}" onerror="this.onerror=null; this.src='not_found.jpg';">
+          <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" class="card-img-top img-fluid" alt="${movie.title}" onerror="this.onerror=null; this.src='assets/img/not_found.jpg';">
         </div>
         <a href="detail.html?id=${movie.id}" class="stretched-link"></a>
         <div class="position-absolute top-0 start-0 p-1" style="background-color: rgba(0, 0, 0, 0.5);">
