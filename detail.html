@@ -23,6 +23,7 @@
   </nav>
   <div class="container">
     <div class="row" id="root" style="margin-top: 5rem;margin-bottom: 2rem;"></div>
+    <button id="trailerBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#trailerModal">Trailer</button>
   </div>
 
   <footer class="footer">
@@ -49,9 +50,44 @@
     </div>
   </footer>
 
-  <!-- Asset Javascripts -->
+  <!-- Modal -->
+  <div class="modal fade" id="trailerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Trailer</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Iframe trailer YouTube -->
+          <div class="embed-responsive">
+            <iframe class="embed-responsive-item" width="460" height="315" id="trailerIframe" title="Chief of Station | Official Trailer" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Asset Javascripts -->  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Fungsi untuk menetapkan sumber iframe dan membuka modal
+    function openModal(videoId) {
+      $('#trailerIframe').attr('src', 'https://www.youtube.com/embed/' + videoId);
+      $('#trailerModal').modal('show');
+    }
+    
+    // Fungsi untuk menutup modal dan menghentikan video
+    $('#trailerModal').on('hidden.bs.modal', function () {
+      $('#trailerIframe').attr('src', '');
+    });
+    
+    // Menambahkan event listener ke tombol "Trailer"
+    $('#trailerBtn').click(function() {
+      openModal("Krsu0mazuZ4");
+    });
+  </script>  
   <script src="assets/js/detail.js"></script>
 </body>
 
