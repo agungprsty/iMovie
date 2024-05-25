@@ -242,6 +242,12 @@ button.navbar-toggler {
     height: 300px;
 }
 
+@media (max-width: 987px) {
+    .detail__poster img {
+        width: 100%;
+    }
+}
+
 @media (max-width: 787px) {
     .container__head {
         display: block;
