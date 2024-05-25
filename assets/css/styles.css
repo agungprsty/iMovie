@@ -232,11 +232,30 @@ button.navbar-toggler {
     margin-bottom: 2rem;
 }
 
+.modal-content-custom {
+    width: 0% !important;
+    border: 0 !important;
+}
+
+.embed-responsive-item {
+    width: 435px; 
+    height: 300px;
+}
+
 @media (max-width: 787px) {
     .container__head {
         display: block;
     }
+    
     .footer span, p {
         font-size: 15px;
+    }
+
+    .detail__poster {
+        margin-bottom: 1rem;
+    }
+
+    .detail__poster img {
+        width: 50%;
     }
 }

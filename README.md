@@ -14,7 +14,3 @@ LINK: https://agungprsty.github.io/iMovie
 
 #### Service
 - API (from themoviedb.org)
-
-#### Saran
-1. Rekomendasi nonton google + yt
-2. Redirect to lk21 or 
