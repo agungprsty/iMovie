@@ -7,15 +7,29 @@ const urlsToCache = [
   'assets/js/index.js',
   'assets/js/detail.js',
   'assets/img/android-chrome-192x192.png',
-  'assets/img/android-chrome-512x512.png'
+  'assets/img/android-chrome-512x512.png',
+  'all_movies.json'  // Ensure this file is available in your project
 ];
 
+// Install service worker and cache resources
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        return Promise.all(
+          urlsToCache.map(url => {
+            return fetch(url)
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+                }
+                return cache.put(url, response);
+              })
+              .catch(error => {
+                console.error(`Failed to cache ${url}:`, error);
+              });
+          })
+        );
       })
       .catch(error => {
         console.error('Cache open failed:', error);
@@ -23,18 +37,41 @@ self.addEventListener('install', event => {
   );
 });
 
+// Intercept fetch requests and serve cached resources if available
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
+  const apiUrl = 'https://api.themoviedb.org';
+
+  if (event.request.url.startsWith(apiUrl)) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          // Clone the response
+          let responseClone = response.clone();
+
+          // Open cache
+          caches.open(CACHE_NAME).then(cache => {
+            // Cache the fetched data
+            cache.put(event.request, responseClone);
+          });
+
           return response;
-        }
-        return fetch(event.request);
-      })
-  );
+        })
+        .catch(() => {
+          // If fetch fails, serve from cache
+          return caches.match('all_movies.json');
+        })
+    );
+  } else {
+    event.respondWith(
+      caches.match(event.request)
+        .then(response => {
+          return response || fetch(event.request);
+        })
+    );
+  }
 });
 
+// Activate service worker and remove old caches
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(

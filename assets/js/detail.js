@@ -32,7 +32,8 @@ const formatDate = (dateStr) => {
 };
 
 // Function to open modal and set iframe source
-const openModal = (videoUrl) => {
+const openModal = (title, videoUrl) => {
+  $('#trailerIframe').attr('title', title);
   $('#trailerIframe').attr('src', videoUrl);
   $('#trailerModal').modal('show');
 };
@@ -96,7 +97,7 @@ const getMovieDetails = async () => {
               <button id="watchBtn" class="btn btn-dark">Watching free</button>
               <button id="trailerBtn" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#trailerModal">Trailer</button>
             </div>
-            <a class="btn btn-light" href="index.html">
+            <a class="btn btn-light" href="/">
               <i class="bi bi-arrow-left-circle-fill"></i>
               Back
             </a>
@@ -106,7 +107,7 @@ const getMovieDetails = async () => {
       root.innerHTML = content;
       
       // Add event listener to the trailer button
-      document.getElementById('trailerBtn').addEventListener('click', () => openModal(trailerUrl));
+      document.getElementById('trailerBtn').addEventListener('click', () => openModal(movie.title, trailerUrl));
 
       // Add event listener to the watch button
       document.getElementById('watchBtn').addEventListener('click', () => {
@@ -130,5 +131,6 @@ window.addEventListener('load', getMovieDetails);
 
 // Close the modal and stop the video when the modal is hidden
 $('#trailerModal').on('hidden.bs.modal', function () {
+  $('#trailerIframe').attr('title', '');
   $('#trailerIframe').attr('src', '');
 });
