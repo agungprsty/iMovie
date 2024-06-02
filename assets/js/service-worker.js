@@ -10,17 +10,19 @@ const urlsToCache = [
   'assets/img/android-chrome-512x512.png'
 ];
 
-// Install service worker and cache resources
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
+        console.log('Opened cache');
         return cache.addAll(urlsToCache);
+      })
+      .catch(error => {
+        console.error('Cache open failed:', error);
       })
   );
 });
 
-// Intercept fetch requests and serve cached resources if available
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
@@ -33,7 +35,6 @@ self.addEventListener('fetch', event => {
   );
 });
 
-// Activate service worker and remove old caches
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
