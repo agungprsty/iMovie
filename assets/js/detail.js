@@ -74,7 +74,7 @@ const getMovieDetails = async () => {
           <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">
         </div>
         <div class="col-md-8 content">
-          <dl class="row">
+          <dl class="row" style="margin-bottom: 0;">
             <dt class="col-md-3">Genre</dt>
             <dd class="col-md-9">${movie.genres.map(genre => genre.name).join(", ")}</dd>
 
