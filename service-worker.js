@@ -1,14 +1,13 @@
 const CACHE_NAME = 'film-rec-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/detail.html',
-  '/app.js',
-  '/assets/css/styles.css',
-  '/assets/js/index.js',
-  '/assets/js/detail.js',
-  '/assets/img/android-chrome-192x192.png',
-  '/assets/img/android-chrome-512x512.png'
+  'index.html',
+  'detail.html',
+  'app.js',
+  'assets/css/styles.css',
+  'assets/js/index.js',
+  'assets/js/detail.js',
+  'assets/img/android-chrome-192x192.png',
+  'assets/img/android-chrome-512x512.png'
 ];
 
 // Install service worker and cache resources
