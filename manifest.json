@@ -1,7 +1,7 @@
 {
   "name": "Nonton Film Online Terbaru",
   "short_name": "iMovie",
-  "start_url": "https://agungprsty.github.io/iMovie/",
+  "start_url": "/iMovie/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
