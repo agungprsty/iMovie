@@ -8,7 +8,8 @@ const urlsToCache = [
   'assets/js/detail.js',
   'assets/img/android-chrome-192x192.png',
   'assets/img/android-chrome-512x512.png',
-  'all_movies.json'  // Ensure this file is available in your project
+  'all_movies.json',
+  'offline.html'
 ];
 
 // Install service worker and cache resources
@@ -58,14 +59,23 @@ self.addEventListener('fetch', event => {
         })
         .catch(() => {
           // If fetch fails, serve from cache
-          return caches.match('all_movies.json');
+          return caches.match('all_movies.json').then(response => {
+            if (response) {
+              return response;
+            } else {
+              return caches.match('offline.html');
+            }
+          });
         })
     );
   } else {
     event.respondWith(
       caches.match(event.request)
         .then(response => {
-          return response || fetch(event.request);
+          return response || fetch(event.request).catch(() => {
+            // If fetch fails (e.g., user is offline), return offline page
+            return caches.match('offline.html');
+          });
         })
     );
   }

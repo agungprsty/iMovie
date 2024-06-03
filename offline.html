@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #2980B9;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      color: #000;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .container h1 {
+      font-size: 3em;
+      margin: 0;
+      animation: bounceIn 2s infinite alternate;
+    }
+    .container p {
+      font-size: 1.5em;
+    }
+    .clouds {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .cloud {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      width: 200px;
+      height: 100px;
+      opacity: 0.5;
+      animation: float 30s linear infinite;
+    }
+    .cloud:nth-child(2) {
+      top: 20%;
+      left: 10%;
+      width: 300px;
+      height: 150px;
+      animation-duration: 25s;
+    }
+    .cloud:nth-child(3) {
+      top: 60%;
+      left: 40%;
+      width: 250px;
+      height: 125px;
+      animation-duration: 35s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes bounceIn {
+      0% { transform: translateY(-20px); }
+      100% { transform: translateY(20px); }
+    }
+    @keyframes float {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(150%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>You're Offline</h1>
+    <p>Please check your internet connection.</p>
+  </div>
+  <div class="clouds">
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+  </div>
+</body>
+</html>
