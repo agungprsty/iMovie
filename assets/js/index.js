@@ -51,7 +51,7 @@ function renderMovieCards(movies) {
   }
   
   // Calculate column width
-  const colWidth = 100 / numCols;;
+  const colWidth = 100 / numCols;
   
   // Render movie cards
   movies.forEach(movie => {

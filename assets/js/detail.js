@@ -97,7 +97,7 @@ const getMovieDetails = async () => {
               <button id="watchBtn" class="btn btn-dark">Watching free</button>
               <button id="trailerBtn" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#trailerModal">Trailer</button>
             </div>
-            <a class="btn btn-light" href="/">
+            <a class="btn btn-light" href="/iMovie">
               <i class="bi bi-arrow-left-circle-fill"></i>
               Back
             </a>
